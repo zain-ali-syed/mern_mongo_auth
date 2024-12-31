@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 //this definnes how the 'rows' of the table look
 //and we use this model to interact with the database
 //it makes sure we stick to the below schema
-//we each table we create a MODEL in the models folder which represents
+//for each table we create a MODEL in the models folder which represents
 //the document structure a collection can hold
 
 const exerciseSchema = new mongoose.Schema(

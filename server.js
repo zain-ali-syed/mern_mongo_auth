@@ -16,7 +16,6 @@ app.use((req, res, next) => {
 app.use("/api/exercises", exerciseRoutes);
 
 //connect to db
-//MONGO_URI=mongodb+srv://admin:F5zAkXd85_wWPB2@cluster0.uhqeu.mongodb.net/fitnessDB
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {

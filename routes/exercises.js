@@ -1,33 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const Exercise = require("../models/exerciseModel");
+const { getAllDocuments, addDocument, getDocumentById, deleteDocumentById, updateDocumentById} = require('../controllers/documentController')
 
-router.get("/", (req, res) => {
-  res.end("return all exercises");
-});
-
-router.post("/", async (req, res) => {
-  try {
-    const exercise = await Exercise.create({
-      title: "Curls",
-      load: 20,
-      reps: 10,
-    });
-    res.status(200).json(exercise);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
-
-router.get("/:id", (req, res) => {
-  res.end("get specfic exercise");
-});
-
-router.delete("/:id", (req, res) => {
-  res.end("delete specific exercises");
-});
-router.put("/:id", (req, res) => {
-  res.end("updated specific exercise");
-});
+router.get("/", (req, res) => getAllDocuments(req, res, Exercise));
+router.post("/", (req, res) => addDocument(req, res, Exercise));
+router.get("/:id", (req, res) => getDocumentById(req, res, Exercise));
+router.delete("/:id", (req, res) => deleteDocumentById(req, res, Exercise));
+router.put("/:id", (req, res) => updateDocumentById(req, res, Exercise));
 
 module.exports = router;
